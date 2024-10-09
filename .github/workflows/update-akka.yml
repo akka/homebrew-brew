@@ -1,0 +1,48 @@
+name: Update Akka CLI version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/github-script@v7
+      id: check
+      with:
+        script: |
+          if ("${{ github.rest.issue.title }}" != "update akka" && "${{ github.event_name }}" != "workflow_dispatch") {
+            console.log('Issue is not to update akka');
+            return 'stop'
+          } else {
+            return 'build'
+          }
+          console.log("${{ github.event_name }}")
+        result-encoding: string
+
+    - name: Checkout
+      # https://github.com/actions/checkout/releases
+      # v4.1.1
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      if: steps.check.outputs.result == 'build'
+      # Force fetching only latest main
+      with:
+        ref: 'main'
+
+    - name: Run command
+      run: python3 -m pip install requests && ./scripts/akka-script.py
+      if: steps.check.outputs.result == 'build'
+
+    - name: Create Pull Request
+      # https://github.com/peter-evans/create-pull-request/releases
+      # v6.0.5
+      uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e
+      if: steps.check.outputs.result == 'build'
+      with:
+        title: Update akka CLI version
+        branch-suffix: short-commit-hash
+        body: Update akka CLI to latest stable version
+        delete-branch: true
+        commit-message: "feat(cli): update akka CLI to the latest stable version"
+        author: "GitHub <noreply@github.com>"

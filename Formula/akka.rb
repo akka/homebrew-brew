@@ -13,24 +13,24 @@
 # limitations under the License.
 
 class Akka < Formula
-    version "2.0.53"
+    version "3.0.1"
     desc "Akka :: Command Line Interface"
     homepage "https://akka.io"
     license "https://downloads.lightbend.com/website/legal/lightbend-commercial-software-license-agreement.txt"
 
     if OS.mac?
         if Hardware::CPU.intel?
-            url "https://downloads.akka.io/#{version}/akka_darwin_amd64_#{version}.tar.gz"
-            sha256 "5f51acf64ed184eac9bfe9bd620ca0c8d83689d97273fcf74ae08809a396bf1f"
+            url "https://downloads.kalix.io/#{version}/akka_darwin_amd64_#{version}.tar.gz"
+            sha256 "a7338a2397e714168f9cef1cb3d8c5dff82cb4d2031aedafa813cfdeaed2b4b2"
         else
-            url "https://downloads.akka.io/#{version}/akka_darwin_arm64_#{version}.tar.gz"
-            sha256 "42ffa745bb106bec6a49614d0d20bb7583eac2c7fcc138f897fd01a6c872f2cd"
+            url "https://downloads.kalix.io/#{version}/akka_darwin_arm64_#{version}.tar.gz"
+            sha256 "96b050d3655e4d5a9fb63cad3a58693d975c60a95eb8a5718d93a63e598017eb"
         end
     end
 
     if OS.linux?
-        url "https://downloads.akka.io/#{version}/akka_linux_amd64_#{version}.tar.gz"
-        sha256 "318b44c59c985cca80046ffa2dd7108d7db99d8a851d25c80bee077cea148cd1"
+        url "https://downloads.kalix.io/#{version}/akka_linux_amd64_#{version}.tar.gz"
+        sha256 "f678622bfe4cf7f5c9786228562581759410aabfa05632ae3bcdafbdaee6b5df"
     end
 
     def install
@@ -47,7 +47,7 @@ class Akka < Formula
 
             Accounts:
                 To use #{name} you'll need to have an active account on Akka.
-                You can register for an account on https://console.akka.io
+                You can register for an account on https://console.akka.io/register
                 or sign up using
                 #{name} auth signup
 

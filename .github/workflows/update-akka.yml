@@ -5,6 +5,7 @@ on:
 
 jobs:
   update_version:
+    name: Create bump Pull Request
     runs-on: ubuntu-latest
 
     steps:

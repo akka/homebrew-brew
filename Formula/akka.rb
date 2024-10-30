@@ -20,16 +20,16 @@ class Akka < Formula
 
     if OS.mac?
         if Hardware::CPU.intel?
-            url "https://downloads.kalix.io/#{version}/akka_darwin_amd64_#{version}.tar.gz"
+            url "https://downloads.akka.io/#{version}/akka_darwin_amd64_#{version}.tar.gz"
             sha256 "cd96fc19a937cf0c54c10723ab7462a5d857653df868a787ee570812b184367b"
         else
-            url "https://downloads.kalix.io/#{version}/akka_darwin_arm64_#{version}.tar.gz"
+            url "https://downloads.akka.io/#{version}/akka_darwin_arm64_#{version}.tar.gz"
             sha256 "9e8507fb3fa44f064b6266f5c9f3e66c9f93bfdb9e19c84a59dd3b7e26b43b62"
         end
     end
 
     if OS.linux?
-        url "https://downloads.kalix.io/#{version}/akka_linux_amd64_#{version}.tar.gz"
+        url "https://downloads.akka.io/#{version}/akka_linux_amd64_#{version}.tar.gz"
         sha256 "b96ef9c7b722b9d828fede3d326edb35d967db345c585d116b23ead7b0bf4816"
     end
 

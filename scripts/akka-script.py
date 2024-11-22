@@ -24,7 +24,7 @@ def parseLine(line):
         "version": version
     }
 
-url = 'https://downloads.kalix.io/latest/akka_checksums.txt'
+url = 'https://downloads.akka.io/latest/akka_checksums.txt'
 resp = req.get(url)
 
 lines = resp.text.splitlines()

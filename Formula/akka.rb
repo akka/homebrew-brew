@@ -13,7 +13,7 @@
 # limitations under the License.
 
 class Akka < Formula
-    version "3.0.57"
+    version "3.0.58"
     desc "Akka :: Command Line Interface"
     homepage "https://akka.io"
     license "https://downloads.lightbend.com/website/legal/lightbend-commercial-software-license-agreement.txt"
@@ -21,16 +21,16 @@ class Akka < Formula
     if OS.mac?
         if Hardware::CPU.intel?
             url "https://downloads.akka.io/#{version}/akka_darwin_amd64_#{version}.tar.gz"
-            sha256 "974af3f35b083f0f4d797c7711a6ab8c948fd40850bd657f8fc4696cbd3f735f"
+            sha256 "02b2686bc684ba1348c338aaaf658b4fa2f134ece657b6e9a9996ea64648193f"
         else
             url "https://downloads.akka.io/#{version}/akka_darwin_arm64_#{version}.tar.gz"
-            sha256 "83126607dd22639b1479e0512003ac8ba90749bbf850f5129762b8d12908269d"
+            sha256 "7bd5d7235d46f9144c86862ae7c53cc65f4a4e9cc369673376a855cecd1c4255"
         end
     end
 
     if OS.linux?
         url "https://downloads.akka.io/#{version}/akka_linux_amd64_#{version}.tar.gz"
-        sha256 "48ad39b2905f2fd655b80fa521c0ed1de727adba4468ff61cc96027964aa0277"
+        sha256 "11fb04e204a75807376bcb6d7caae3f4e1564b49d8bcea85821d70f63c7c0575"
     end
 
     def install

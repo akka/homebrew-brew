@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/github-script@v7
+      # https://github.com/actions/github-script/releases
+      # v9.0.0
+    - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
       id: check
       with:
         script: |
@@ -24,8 +26,8 @@ jobs:
 
     - name: Checkout
       # https://github.com/actions/checkout/releases
-      # v4.1.1
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      # v7.0.1
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       if: steps.check.outputs.result == 'build'
       # Force fetching only latest main
       with:
@@ -37,8 +39,8 @@ jobs:
 
     - name: Create Pull Request
       # https://github.com/peter-evans/create-pull-request/releases
-      # v6.0.5
-      uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e
+      # v8.1.1
+      uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
       if: steps.check.outputs.result == 'build'
       with:
         title: Update akka CLI version

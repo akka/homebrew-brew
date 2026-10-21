@@ -2,6 +2,11 @@ name: Update Akka CLI version
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: CLI version to install in the formula
+        type: string
+        default: latest
 
 jobs:
   update_version:
@@ -34,6 +39,8 @@ jobs:
         ref: 'main'
 
     - name: Run command
+      env:
+        CLI_VERSION: ${{ inputs.version }}
       run: python3 -m pip install requests && ./scripts/akka-script.py
       if: steps.check.outputs.result == 'build'
 

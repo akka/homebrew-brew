@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import os
+import re
+
 import requests as req
 import subprocess
 from sys import platform
@@ -16,7 +19,7 @@ def parseLine(line):
     elems = elems[2].split('_')
     os = elems[1]
     proc = elems[2]
-    version = '.'.join(elems[3].split('.')[0:3])
+    version = elems[3].removesuffix('.tar.gz')
     return {
         "sha": sha,
         "os": os,
@@ -24,8 +27,13 @@ def parseLine(line):
         "version": version
     }
 
-url = 'https://downloads.kalix.io/latest/akka_checksums.txt'
+version = os.environ.get('CLI_VERSION', 'latest')
+if version != 'latest' and not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?', version):
+    raise ValueError('Invalid CLI version')
+
+url = f'https://downloads.akka.io/{version}/akka_checksums.txt'
 resp = req.get(url)
+resp.raise_for_status()
 
 lines = resp.text.splitlines()
 
